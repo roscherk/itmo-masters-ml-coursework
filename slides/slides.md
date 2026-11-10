@@ -1,9 +1,6 @@
 ---
 theme: default
-title: "Synthetic Data Generation for Vector Search Benchmarking"
-info: |
-  Comparing DisturbGen-style perturbation, diagonal-GMM, and cuVS fingerprint generation
-  against LAION-10M (CLIP ViT-L/14, 768-d).
+title: "Генерация синтетических данных для задач оценки алгоритмов поиска в векторных базах данных"
 highlighter: shiki
 drawings:
   persist: false
@@ -11,93 +8,54 @@ transition: slide-left
 mdc: true
 ---
 
-# Synthetic Data Generation for Vector Search Benchmarking
+# Генерация синтетических данных для задач оценки алгоритмов поиска в векторных базах данных
 
-Comparing three algorithms against LAION-10M
+Архипов Прохор, группа J4141
 
 <div class="pt-12 text-gray-400">
-  Machine Learning · ITMO · Autumn 2026
+Курсовая работа по Машинному Обучению, ИТМО, Осень 2026
 </div>
 
 ---
-layout: two-cols
+layout: default
 ---
 
-# Why Synthetic Data?
+# Контекст
 
-Real embedding datasets are **expensive and constrained**
-
-- LAION-10M: ~31 GB, requires download pipeline
-- Privacy constraints on proprietary embeddings
-- Scaling experiments need controllable dataset size
-
-::right::
-
-## What Makes a Good Synthetic Dataset?
-
-A synthetic dataset is useful for benchmarking if it reproduces properties that **determine index behaviour**:
-
-1. **Neighbourhood structure** — routing recall ρ(q)
-2. **Quantisation difficulty** — bits needed for recall ≥ 0.99
-3. **Overall distribution** — C2ST distinguishability
+Здесь рассказать в нескольких словах о задаче векторного поиска: как формулируется, где возникает, где полезно. Сужаем на приближённый поиск ANN, текущие SOTA алгоритмы: HSNW, RaBitQ. Отдельно сказать про то, что решаем задачу поиска в *распределённой* базе данных, пояснить что это значит: данные хранятся по шардам, для каждого запроса есть роутер, который определяет, к каким шардам обращаемся
 
 ---
 
-# Problem Statement
+# Постановка задачи
 
-> Which synthetic generation algorithm best reproduces LAION-10M properties relevant to benchmarking ANN indexes?
-
-**Target dataset:** LAION-10M, CLIP ViT-L/14 embeddings, d = 768
-
-**Success criterion (defined before experiments):**
-
-| Criterion | Threshold |
-|-----------|-----------|
-| Max shift in routing recall ρ̄ | ≤ 0.02 |
-| Per-bit recall shift \|Δ recall@100\| | ≤ 0.01 |
-| Minimum bits for recall 0.99 | exact match |
-
----
-layout: three-cols
----
-
-# Three Algorithms
-
-::left::
-
-### Baseline
-**DisturbGen-style Perturbation**
-
-Fit flat k-means on 100k sample.
-Generate: sample centroid ∝ cluster size,
-add Gaussian noise scaled to per-cluster std.
-
-*Simple, interpretable.*
-
-::middle::
-
-### Alternative
-**Diagonal-covariance GMM**
-
-Fit `sklearn.GaussianMixture(covariance_type="diag")`
-on 100k sample. Sample from the mixture.
-
-*Captures per-dimension variance.*
-
-::right::
-
-### Reference
-**cuVS Fingerprint + blur**
-
-Fit PCA-compressed k-means fingerprint.
-Generate in 32-d subspace, blur cluster
-boundaries with τ = 1.0.
-
-*Best understood against LAION (prior work).*
+Здесь ставим задачу: научиться генерировать синтетические данные так, чтобы они повторяли какие-то характеристики датасета + были достаточно точными (не завышали метрики для наших алгоритмов)
 
 ---
 
-# Hypotheses
+# Датасет
+
+Здесь кратко рассказать про то, как устроен LAION. Одним предложением про то, почему выбрали именно его: по распределению больше всего похож на данные заказчика
+
+---
+
+# Метрики
+
+Throwback к контексту: напоминаем про распределённость, шарды, роутер.
+Далее подробно говорим про метрики: rho(q), recall от количества бит квантизации.
+Дополнительные статистические метрики: хабы (скошенность N_10), доля дубликатов, C2ST, спектр ковариации
+Ещё что-то?
+
+---
+
+# Алгоритмы
+
+Три алгоритма: DisturbGen baseline, GMM (sklearn), cuVS (базовый)
+
+Дальше можно ещё сказать про вариацию cuVS + blur, но в основных сравнениях сравниваем базовый cuVS
+
+---
+
+# Гипотезы
 
 **H1 (over-separation):**  
 Perturbation baseline over-estimates ρ(q) by > 0.02 — clean Gaussian clusters mirror unblurred cuVS behaviour.
@@ -105,10 +63,7 @@ Perturbation baseline over-estimates ρ(q) by > 0.02 — clean Gaussian clusters
 **H2 (GMM captures variance):**  
 Diagonal GMM reproduces per-bit recall@100 more accurately than the baseline because per-dimension variance is a first-order predictor of quantisation difficulty.
 
-**H3 (cuVS best ρ, worst hubs):**  
-cuVS + blur achieves the smallest ρ shift but introduces hub artefacts (high N₁₀ skewness) that the other methods avoid.
-
-**H4 (all fail at low bits):**  
+**H3 (all fail at low bits):**  
 At 1–3 bits, all methods underestimate LAION difficulty because none captures its continuous intrinsic dimensionality (~24).
 
 ---
@@ -244,9 +199,9 @@ Baseline and GMM results: TBD.
 layout: center
 ---
 
-# Thank you
+# Спасибо за внимание
 
-**Repository:** `coursework/`
+Репозиторий: [ссылка на гитхаб]
 
 **References**
 
