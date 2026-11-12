@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 340" width="100%" height="100%" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="funnel-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F2B84B" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#6BC075" stop-opacity="0.16" />
+    </linearGradient>
+    <marker id="down-amber" viewBox="0 0 8 7" refX="7" refY="3.5" markerWidth="8" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 0.5 L 7.5 3.5 L 0 6.5 z" fill="#F2B84B" />
+    </marker>
+  </defs>
+
+  <!-- Фон -->
+  <rect width="480" height="340" rx="12" fill="#121212" />
+
+  <!-- Заголовок -->
+  <text x="20" y="26" fill="#fffefb" font-size="15" font-weight="700" letter-spacing="0.3">RaBitQ</text>
+
+  <!-- ================= ВХОДНОЙ ВЕКТОР ================= -->
+  <g transform="translate(20, 68)">
+    <rect x="0" y="0" width="92" height="46" rx="6" fill="#241E13" stroke="#F2B84B" stroke-width="1.5" />
+    <text x="46" y="27" text-anchor="middle" fill="#fffefb" font-size="12.5" font-family="ui-monospace, monospace">0.4218</text>
+
+    <rect x="99" y="0" width="92" height="46" rx="6" fill="#241E13" stroke="#F2B84B" stroke-width="1.5" />
+    <text x="145" y="27" text-anchor="middle" fill="#fffefb" font-size="12.5" font-family="ui-monospace, monospace">-0.8104</text>
+
+    <rect x="198" y="0" width="92" height="46" rx="6" fill="#241E13" stroke="#F2B84B" stroke-width="1.5" />
+    <text x="244" y="27" text-anchor="middle" fill="#fffefb" font-size="12.5" font-family="ui-monospace, monospace">0.1739</text>
+
+    <rect x="297" y="0" width="92" height="46" rx="6" fill="#241E13" stroke="#F2B84B" stroke-width="1.5" />
+    <text x="343" y="27" text-anchor="middle" fill="#fffefb" font-size="12.5" font-family="ui-monospace, monospace">-0.5326</text>
+
+    <rect x="396" y="0" width="44" height="46" rx="6" fill="#241E13" stroke="#F2B84B" stroke-width="1.5" stroke-opacity="0.7" />
+    <text x="418" y="26" text-anchor="middle" fill="#fffefb" fill-opacity="0.75" font-size="14">…</text>
+  </g>
+  <text x="240" y="130" text-anchor="middle" fill="#fffefb" fill-opacity="0.6" font-size="10.2">Размер в памяти: 32 × d бит</text>
+
+  <!-- ================= ПЕРЕХОД СЖАТИЯ ================= -->
+  <polygon points="20,140 460,140 216,200 20,200" fill="url(#funnel-grad)" />
+  <line x1="20" y1="140" x2="20" y2="200" stroke="#6E675F" stroke-opacity="0.45" stroke-width="1" stroke-dasharray="3 3" />
+  <line x1="460" y1="140" x2="216" y2="200" stroke="#F2B84B" stroke-opacity="0.45" stroke-width="1.2" stroke-dasharray="4 3" />
+
+  <line x1="118" y1="141" x2="118" y2="194" stroke="#F2B84B" stroke-width="1.8" marker-end="url(#down-amber)" />
+  <rect x="64" y="158" width="108" height="22" rx="11" fill="#262014" stroke="#F2B84B" stroke-width="1.2" />
+  <text x="118" y="173" text-anchor="middle" fill="#F2B84B" font-size="10.8" font-weight="700">RaBitQ</text>
+
+  <!-- ================= ВЫХОДНОЙ ВЕКТОР ================= -->
+  <text x="20" y="218" fill="#fffefb" fill-opacity="0.82" font-size="11" font-weight="500">На выходе: каждая координата → n_bits</text>
+
+  <!-- Компактный сжатый вектор слева -->
+  <g transform="translate(20, 228)">
+    <rect x="0" y="0" width="38" height="42" rx="5" fill="#18261A" stroke="#6BC075" stroke-width="1.6" />
+    <text x="19" y="25" text-anchor="middle" fill="#6BC075" font-size="11.5" font-weight="700" font-family="ui-monospace, monospace">101</text>
+
+    <rect x="42" y="0" width="38" height="42" rx="5" fill="#18261A" stroke="#6BC075" stroke-width="1.6" />
+    <text x="61" y="25" text-anchor="middle" fill="#6BC075" font-size="11.5" font-weight="700" font-family="ui-monospace, monospace">010</text>
+
+    <rect x="84" y="0" width="38" height="42" rx="5" fill="#18261A" stroke="#6BC075" stroke-width="1.6" />
+    <text x="103" y="25" text-anchor="middle" fill="#6BC075" font-size="11.5" font-weight="700" font-family="ui-monospace, monospace">110</text>
+
+    <rect x="126" y="0" width="38" height="42" rx="5" fill="#18261A" stroke="#6BC075" stroke-width="1.6" />
+    <text x="145" y="25" text-anchor="middle" fill="#6BC075" font-size="11.5" font-weight="700" font-family="ui-monospace, monospace">001</text>
+
+    <rect x="168" y="0" width="28" height="42" rx="5" fill="#18261A" stroke="#6BC075" stroke-width="1.6" stroke-opacity="0.7" />
+    <text x="182" y="24" text-anchor="middle" fill="#6BC075" font-size="13">…</text>
+  </g>
+
+  <!-- Освобождённая память справа -->
+  <rect x="224" y="228" width="236" height="42" rx="6" fill="#22201E" fill-opacity="0.45" stroke="#6E675F" stroke-width="1.2" stroke-dasharray="4 3" />
+  <text x="342" y="253" text-anchor="middle" fill="#fffefb" fill-opacity="0.78" font-size="10.8" font-weight="600">Сэкономленная память</text>
+
+  <!-- Подпись под выходом -->
+  <text x="118" y="286" text-anchor="middle" fill="#6BC075" font-size="10.5" font-weight="600">n_bits × d бит</text>
+
+  <!-- Итоговая строка снизу -->
+  <text x="240" y="320" text-anchor="middle" fill="#fffefb" fill-opacity="0.85" font-size="10.5">
+    Размер вектора <tspan fill="#F2B84B" font-weight="600">32 × d</tspan> → <tspan fill="#6BC075" font-weight="600">n_bits × d бит</tspan>: сжимаем всю базу в <tspan fill="#fffefb" fill-opacity="1" font-weight="700">32 / n_bits</tspan> раз
+  </text>
+</svg>

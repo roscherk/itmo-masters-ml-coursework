@@ -1,6 +1,6 @@
 ---
 theme: default
-title: "Генерация синтетических данных для задач оценки алгоритмов поиска в векторных базах данных"
+title: "Генерация синтетических данных для оценки алгоритмов поиска в векторных базах данных"
 highlighter: shiki
 drawings:
   persist: false
@@ -8,7 +8,7 @@ transition: slide-left
 mdc: true
 ---
 
-# Генерация синтетических данных для задач оценки алгоритмов поиска в векторных базах данных
+# Генерация синтетических данных для оценки алгоритмов поиска в векторных базах данных
 
 Архипов Прохор, группа J4141
 
@@ -18,11 +18,52 @@ mdc: true
 
 ---
 layout: default
+class: subheading
+---
+
+# Контекст
+Задача векторного поиска
+
+В множестве векторов $X \subset \R^d$ найти $k$ ближайших соседей вектора-запроса $q$: $\underset{u \in X}{\operatorname{arg\,min}} \ \delta(q, u).$
+
+Здесь и далее мы будем использовать расстояние $L_2$: $\delta(x, y) = \|x - y\|_2$ и говорить про задачу приближённого поиска ближайших соседей (ANN).
+
+Где встречается задача векторного поиска:
+
+- Semantic search
+- RAG
+- RecSys
+- Multimodal search
+
 ---
 
 # Контекст
 
-Здесь рассказать в нескольких словах о задаче векторного поиска: как формулируется, где возникает, где полезно. Сужаем на приближённый поиск ANN, текущие SOTA алгоритмы: HSNW, RaBitQ. Отдельно сказать про то, что решаем задачу поиска в *распределённой* базе данных, пояснить что это значит: данные хранятся по шардам, для каждого запроса есть роутер, который определяет, к каким шардам обращаемся
+Рассмотрим модификацию задачи: векторный поиск в распределённой базе данных:
+
+<div class="flex flex-col items-center justify-center mt-2">
+  <img src="/03-distrib-search.svg" class="h-75" />
+</div>
+
+---
+layout: default
+class: subheading
+---
+
+# Контекст
+SOTA-алгоритмы
+
+- RaBitQ -- алгоритм квантизации (сжатия) векторной базы данных: использует *n_bits битов* на координату вектора 
+- HNSW -- алгоритм быстрого векторного поиска, использует *графовый индекс*
+
+<div class="grid grid-cols-2 gap-6 mt-4 items-center">
+  <div class="flex flex-col items-center">
+    <img src="/04-hnsw.svg" class="h-72 w-auto" />
+  </div>
+  <div class="flex flex-col items-center">
+    <img src="/04-rabitq.svg" class="h-72 w-auto" />
+  </div>
+</div>
 
 ---
 
@@ -202,18 +243,33 @@ Baseline and GMM results: TBD.
 - Validation on graph indexes (HNSW, NSG), not just flat protocols
 
 ---
-layout: center
+layout: two-cols-header
 ---
 
 # Спасибо за внимание
 
-Репозиторий: [ссылка на гитхаб]
+::left::
 
-**References**
+<div class="flex flex-col items-center justify-center h-full">
+  <img src="/qr-code.png" class="w-56" />
+  <a href="https://github.com/roscherk/itmo-masters-ml-coursework" class="mt-4 text-sm text-gray-400 no-underline">ссылка на репозиторий</a>
+</div>
 
-- Gottesbüren et al., *Scaling Graph-Based ANNS*, VLDB 2025 · arXiv:2403.01797
-- Gao & Long, *RaBitQ*, SIGMOD 2024 · arXiv:2405.12497
+::right::
+
+<div class="flex flex-col justify-center h-full">
+
+**Источники**
+
+<div class="text-sm leading-relaxed">
+
+- Gottesbüren et al., *Scaling Graph-Based ANNS*, VLDB 2025
+- Gao & Long, *RaBitQ*, SIGMOD 2024
 - NVIDIA cuVS Benchmarking Guide
 - Lopez-Paz & Oquab, *Classifier Two-Sample Tests*, ICLR 2017
 - Facco et al., *TwoNN intrinsic dimensionality*, Scientific Reports 2017
 - Radovanović et al., *Hubs in Space*, JMLR 2010
+
+</div>
+
+</div>

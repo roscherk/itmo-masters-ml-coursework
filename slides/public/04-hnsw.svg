@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 340" width="100%" height="100%" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="arrow-amber" viewBox="0 0 8 7" refX="7" refY="3.5" markerWidth="8" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 0.5 L 7.5 3.5 L 0 6.5 z" fill="#F2B84B" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 8 7" refX="7" refY="3.5" markerWidth="8" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 0.5 L 7.5 3.5 L 0 6.5 z" fill="#6BC075" />
+    </marker>
+  </defs>
+
+  <!-- Фон -->
+  <rect width="480" height="340" rx="12" fill="#121212" />
+
+  <!-- Заголовок -->
+  <text x="20" y="26" fill="#fffefb" font-size="15" font-weight="700" letter-spacing="0.3">HNSW</text>
+
+  <!-- Подписи слоёв слева -->
+  <g fill="#fffefb" font-size="12" font-weight="600">
+    <text x="24" y="81">Слой 2</text>
+    <text x="24" y="173">Слой 1</text>
+    <text x="24" y="269">Слой 0</text>
+  </g>
+
+  <!-- ================= СЛОЙ 0 (нижний) ================= -->
+  <polygon points="154,244 430,244 374,286 98,286" fill="#22201E" fill-opacity="0.55" stroke="#6E675F" stroke-width="1.2" />
+
+  <!-- Фоновые рёбра Слоя 0 -->
+  <g stroke="#6E675F" stroke-width="1.2" stroke-opacity="0.75">
+    <line x1="148" y1="271" x2="152" y2="256" />
+    <line x1="152" y1="256" x2="184" y2="257" />
+    <line x1="148" y1="271" x2="184" y2="257" />
+    <line x1="148" y1="271" x2="196" y2="278" />
+    <line x1="184" y1="257" x2="196" y2="278" />
+    <line x1="184" y1="257" x2="218" y2="256" />
+    <line x1="196" y1="278" x2="236" y2="272" />
+    <line x1="218" y1="256" x2="236" y2="272" />
+    <line x1="218" y1="256" x2="268" y2="255" />
+    <line x1="236" y1="272" x2="268" y2="255" />
+    <line x1="236" y1="272" x2="302" y2="278" />
+    <line x1="268" y1="255" x2="304" y2="262" />
+    <line x1="302" y1="278" x2="304" y2="262" />
+    <line x1="302" y1="278" x2="346" y2="278" />
+    <line x1="338" y1="261" x2="346" y2="278" />
+    <line x1="338" y1="261" x2="378" y2="261" />
+    <line x1="346" y1="278" x2="378" y2="261" />
+    <line x1="378" y1="261" x2="398" y2="255" />
+  </g>
+
+  <!-- Неактивные узлы Слоя 0 -->
+  <g fill="#22201E" stroke="#6E675F" stroke-width="1.5">
+    <circle cx="148" cy="271" r="4.2" />
+    <circle cx="152" cy="256" r="4.2" />
+    <circle cx="184" cy="257" r="4.2" />
+    <circle cx="196" cy="278" r="4.2" />
+    <circle cx="218" cy="256" r="4.2" />
+    <circle cx="236" cy="272" r="4.2" />
+    <circle cx="268" cy="255" r="4.2" />
+    <circle cx="302" cy="278" r="4.2" />
+    <circle cx="398" cy="255" r="4.2" />
+  </g>
+
+  <!-- Узел спуска на Слое 0 -->
+  <circle cx="304" cy="262" r="5" fill="#262014" stroke="#F2B84B" stroke-width="1.8" />
+
+  <!-- Шаг к ближайшим соседям -->
+  <line x1="309" y1="261.8" x2="331" y2="261.2" stroke="#6BC075" stroke-width="2" marker-end="url(#arrow-green)" />
+
+  <!-- Связи от запроса q к k=3 ближайшим соседям -->
+  <g stroke="#6BC075" stroke-width="1.3" stroke-dasharray="2.5 2">
+    <line x1="358" y1="268" x2="338" y2="261" />
+    <line x1="358" y1="268" x2="346" y2="278" />
+    <line x1="358" y1="268" x2="378" y2="261" />
+  </g>
+
+  <!-- Выбранные k=3 ближайших соседа -->
+  <g>
+    <circle cx="338" cy="261" r="8" fill="#6BC075" fill-opacity="0.16" />
+    <circle cx="338" cy="261" r="5" fill="#18261A" stroke="#6BC075" stroke-width="2" />
+
+    <circle cx="346" cy="278" r="8" fill="#6BC075" fill-opacity="0.16" />
+    <circle cx="346" cy="278" r="5" fill="#18261A" stroke="#6BC075" stroke-width="2" />
+
+    <circle cx="378" cy="261" r="8" fill="#6BC075" fill-opacity="0.16" />
+    <circle cx="378" cy="261" r="5" fill="#18261A" stroke="#6BC075" stroke-width="2" />
+  </g>
+
+  <!-- Запрос q на Слое 0 -->
+  <polygon points="358,262 364,268 358,274 352,268" fill="#F2B84B" stroke="#fffefb" stroke-width="1.2" />
+  <text x="368" y="276" fill="#F2B84B" font-size="11.5" font-weight="700">q</text>
+
+  <!-- ================= СЛОЙ 1 (средний) ================= -->
+  <polygon points="154,148 430,148 374,190 98,190" fill="#22201E" fill-opacity="0.55" stroke="#6E675F" stroke-width="1.2" />
+
+  <!-- Спуск Слой 1 -> Слой 0 -->
+  <line x1="304" y1="171" x2="304" y2="255" stroke="#F2B84B" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#arrow-amber)" />
+
+  <!-- Фоновые рёбра Слоя 1 -->
+  <g stroke="#6E675F" stroke-width="1.2" stroke-opacity="0.8">
+    <line x1="148" y1="175" x2="184" y2="161" />
+    <line x1="148" y1="175" x2="236" y2="176" />
+    <line x1="184" y1="161" x2="236" y2="176" />
+    <line x1="184" y1="161" x2="304" y2="166" />
+    <line x1="304" y1="166" x2="392" y2="158" />
+  </g>
+
+  <!-- Неактивные узлы Слоя 1 -->
+  <g fill="#22201E" stroke="#6E675F" stroke-width="1.5">
+    <circle cx="148" cy="175" r="4.5" />
+    <circle cx="184" cy="161" r="4.5" />
+    <circle cx="392" cy="158" r="4.5" />
+  </g>
+
+  <!-- Активный маршрут Слоя 1 -->
+  <line x1="241" y1="175.3" x2="297" y2="167" stroke="#F2B84B" stroke-width="2" marker-end="url(#arrow-amber)" />
+  <circle cx="236" cy="176" r="5" fill="#262014" stroke="#F2B84B" stroke-width="1.8" />
+  <circle cx="304" cy="166" r="5" fill="#262014" stroke="#F2B84B" stroke-width="1.8" />
+
+  <!-- Запрос q на Слое 1 -->
+  <polygon points="358,166 364,172 358,178 352,172" fill="#F2B84B" stroke="#fffefb" stroke-width="1.2" />
+  <text x="368" y="180" fill="#F2B84B" font-size="11.5" font-weight="700">q</text>
+
+  <!-- ================= СЛОЙ 2 (верхний) ================= -->
+  <polygon points="154,56 430,56 374,98 98,98" fill="#22201E" fill-opacity="0.55" stroke="#6E675F" stroke-width="1.2" />
+
+  <!-- Спуск Слой 2 -> Слой 1 -->
+  <line x1="236" y1="89" x2="236" y2="169" stroke="#F2B84B" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#arrow-amber)" />
+
+  <!-- Фоновые рёбра Слоя 2 -->
+  <g stroke="#6E675F" stroke-width="1.2" stroke-opacity="0.8">
+    <line x1="148" y1="83" x2="218" y2="68" />
+    <line x1="218" y1="68" x2="236" y2="84" />
+    <line x1="218" y1="68" x2="396" y2="67" />
+    <line x1="236" y1="84" x2="396" y2="67" />
+  </g>
+
+  <!-- Неактивные узлы Слоя 2 -->
+  <g fill="#22201E" stroke="#6E675F" stroke-width="1.5">
+    <circle cx="218" cy="68" r="4.5" />
+    <circle cx="396" cy="67" r="4.5" />
+  </g>
+
+  <!-- Активный маршрут Слоя 2 -->
+  <line x1="153" y1="83.1" x2="229" y2="83.9" stroke="#F2B84B" stroke-width="2" marker-end="url(#arrow-amber)" />
+  <circle cx="148" cy="83" r="5" fill="#262014" stroke="#F2B84B" stroke-width="1.8" />
+  <circle cx="236" cy="84" r="5" fill="#262014" stroke="#F2B84B" stroke-width="1.8" />
+
+  <!-- Запрос q на Слое 2 -->
+  <polygon points="358,74 364,80 358,86 352,80" fill="#F2B84B" stroke="#fffefb" stroke-width="1.2" />
+  <text x="368" y="88" fill="#F2B84B" font-size="11.5" font-weight="700">q</text>
+
+  <!-- ================= ЛЕГЕНДА ================= -->
+  <g transform="translate(130, 316)" font-size="10.5" fill="#fffefb" fill-opacity="0.85">
+    <line x1="0" y1="5" x2="20" y2="5" stroke="#F2B84B" stroke-width="2" />
+    <text x="26" y="8.5">Путь поиска</text>
+
+    <circle cx="131" cy="5" r="4.5" fill="#18261A" stroke="#6BC075" stroke-width="1.8" />
+    <text x="141" y="8.5">k-NN результат</text>
+  </g>
+</svg>

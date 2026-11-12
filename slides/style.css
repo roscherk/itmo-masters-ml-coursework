@@ -1,0 +1,19 @@
+/*
+ * Дефолтная тема Slidev стилизует первый абзац после h1 как подзаголовок:
+ *   .slidev-layout h1 + p { opacity: 0.5; margin-top: -0.5rem; }
+ *
+ * Здесь поведение инвертировано:
+ *   - по умолчанию первый абзац после h1 — обычный текст;
+ *   - чтобы получить «подзаголовок», добавь слайду class: subheading.
+ */
+
+.slidev-layout h1 + p {
+  opacity: 1 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.slidev-layout.subheading h1 + p {
+  opacity: 0.5 !important;
+  margin-top: -0.5rem !important;
+}
