@@ -37,7 +37,12 @@ class GMMGenerator:
         if self.gmm_ is None:
             raise RuntimeError("Call fit() first.")
         rng_seed = seed if seed is not None else self.seed + 1
-        samples, _ = self.gmm_.sample(n)
+        old_random_state = self.gmm_.random_state
+        self.gmm_.random_state = np.random.RandomState(rng_seed)
+        try:
+            samples, _ = self.gmm_.sample(n)
+        finally:
+            self.gmm_.random_state = old_random_state
         return samples.astype(np.float32)
 
     def save(self, path: str | Path) -> None:

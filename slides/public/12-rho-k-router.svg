@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 480" width="1040" height="480">
+  <title>Роутер, выбирающий k шардов, и доля найденных 100 ближайших соседей запроса q</title>
+  <desc>Роутер направляет запрос q в k = 3 шарда из пяти. Выбранные шарды вместе содержат 92 из 100 истинных ближайших соседей, один невыбранный — оставшиеся 8, что даёт ρ_k(q) = 0.92.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#F2B84B"/>
+    </marker>
+    <style>
+      .font { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Фон -->
+  <rect width="1040" height="480" rx="16" fill="#121212"/>
+
+  <!-- Запрос q -->
+  <circle cx="85" cy="220" r="30" fill="#262014" stroke="#F2B84B" stroke-width="2.5"/>
+  <text x="85" y="227" text-anchor="middle" class="font" font-size="22" font-weight="700" font-style="italic" fill="#fffefb">q</text>
+  <text x="85" y="272" text-anchor="middle" class="font" font-size="14" font-weight="500" fill="#fffefb" fill-opacity="0.75">Запрос</text>
+
+  <!-- Стрелка: Запрос -> Роутер -->
+  <line x1="115" y1="220" x2="228" y2="220" stroke="#F2B84B" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Узел роутера -->
+  <rect x="230" y="175" width="150" height="90" rx="14" fill="#241E13" stroke="#F2B84B" stroke-width="2"/>
+  <text x="305" y="216" text-anchor="middle" class="font" font-size="19" font-weight="700" fill="#fffefb">Роутер</text>
+  <text x="305" y="238" text-anchor="middle" class="font" font-size="12" fill="#fffefb" fill-opacity="0.7">k = 3 шарда</text>
+
+  <!-- Стрелки: Роутер -> выбранные шарды (1, 3, 4) -->
+  <path d="M 380 220 C 465 220, 465 60, 558 60" fill="none" stroke="#F2B84B" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M 380 220 L 558 220" fill="none" stroke="#F2B84B" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M 380 220 C 465 220, 465 300, 558 300" fill="none" stroke="#F2B84B" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Шард 1 (активный) -->
+  <rect x="560" y="32" width="180" height="56" rx="10" fill="#18261A" stroke="#6BC075" stroke-width="2"/>
+  <text x="650" y="57" text-anchor="middle" class="font" font-size="16" font-weight="600" fill="#fffefb">Шард 1</text>
+  <text x="650" y="74" text-anchor="middle" class="font" font-size="13" font-weight="700" fill="#6BC075">80 / 100 NN</text>
+
+  <!-- Шард 2 (не выбран) -->
+  <rect x="560" y="112" width="180" height="56" rx="10" fill="#22201E" stroke="#6E675F" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="650" y="137" text-anchor="middle" class="font" font-size="16" font-weight="500" fill="#fffefb" fill-opacity="0.68">Шард 2</text>
+  <text x="650" y="154" text-anchor="middle" class="font" font-size="13" font-weight="700" fill="#F2B84B">8 / 100 NN</text>
+
+  <!-- Шард 3 (активный) -->
+  <rect x="560" y="192" width="180" height="56" rx="10" fill="#18261A" stroke="#6BC075" stroke-width="2"/>
+  <text x="650" y="217" text-anchor="middle" class="font" font-size="16" font-weight="600" fill="#fffefb">Шард 3</text>
+  <text x="650" y="234" text-anchor="middle" class="font" font-size="13" font-weight="700" fill="#6BC075">12 / 100 NN</text>
+
+  <!-- Шард 4 (активный) -->
+  <rect x="560" y="272" width="180" height="56" rx="10" fill="#18261A" stroke="#6BC075" stroke-width="2"/>
+  <text x="650" y="297" text-anchor="middle" class="font" font-size="16" font-weight="600" fill="#fffefb">Шард 4</text>
+  <text x="650" y="314" text-anchor="middle" class="font" font-size="13" font-weight="700" fill="#6BC075">0 / 100 NN</text>
+
+  <!-- Шард 5 (не выбран) -->
+  <rect x="560" y="352" width="180" height="56" rx="10" fill="#22201E" stroke="#6E675F" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="650" y="377" text-anchor="middle" class="font" font-size="16" font-weight="500" fill="#fffefb" fill-opacity="0.68">Шард 5</text>
+  <text x="650" y="394" text-anchor="middle" class="font" font-size="13" font-weight="700" fill="#F2B84B">0 / 100 NN</text>
+
+  <!-- Сумма по выбранным шардам (обычный текст) -->
+  <text x="650" y="448" text-anchor="middle" class="font" font-size="14" font-weight="500" fill="#fffefb" fill-opacity="0.75">Σ = 92 / 100 NN</text>
+
+  <!-- Формула rho_k(q) справа -->
+  <g>
+    <rect x="782" y="180" width="238" height="92" rx="12" fill="#241E13" stroke="#F2B84B" stroke-width="2"/>
+    <text x="901" y="212" text-anchor="middle" class="font" font-size="14" font-weight="500" fill="#fffefb" fill-opacity="0.7">доля найденных NN</text>
+    <text x="901" y="252" text-anchor="middle" class="font" font-size="30" font-weight="700" font-style="italic" fill="#fffefb">ρ<tspan baseline-shift="sub" font-size="18">k</tspan>(q) = 0.92</text>
+  </g>
+</svg>

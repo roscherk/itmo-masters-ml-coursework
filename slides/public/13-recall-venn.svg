@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 420" width="980" height="420">
+  <title>Recall@R: пересечение истинных R ближайших соседей и кандидатов, возвращённых индексом</title>
+  <desc>Истинные 100 ближайших соседей G(q) и возвращённые кандидаты C(q) пересекаются в 91 точке; recall@100 = 91/100. 9 соседей остались вне кандидатов, 4 кандидата — ложные.</desc>
+  <defs>
+    <style>
+      .font { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Фон -->
+  <rect width="980" height="420" rx="16" fill="#121212"/>
+
+  <!-- Пересечение: окружность G(q) и C(q) -->
+  <circle cx="400" cy="210" r="150" fill="#262014" stroke="#F2B84B" stroke-width="2"/>
+  <circle cx="560" cy="210" r="150" fill="#18261A" stroke="#6BC075" stroke-width="2"/>
+
+  <!-- Подписи множеств -->
+  <text x="280" y="86" text-anchor="middle" class="font" font-size="19" font-weight="700" fill="#F2B84B">G(q)</text>
+  <text x="280" y="106" text-anchor="middle" class="font" font-size="12" fill="#fffefb" fill-opacity="0.7">истинные 100 NN</text>
+
+  <text x="680" y="86" text-anchor="middle" class="font" font-size="19" font-weight="700" fill="#6BC075">C(q)</text>
+  <text x="680" y="106" text-anchor="middle" class="font" font-size="12" fill="#fffefb" fill-opacity="0.7">кандидаты индекса</text>
+
+  <!-- Пересечение -->
+  <text x="480" y="210" text-anchor="middle" class="font" font-size="20" font-weight="700" fill="#fffefb">91</text>
+  <text x="480" y="230" text-anchor="middle" class="font" font-size="12" fill="#fffefb" fill-opacity="0.7">попало</text>
+
+  <!-- Только в G(q): пропущенные -->
+  <text x="340" y="210" text-anchor="middle" class="font" font-size="20" font-weight="700" fill="#F2B84B">9</text>
+  <text x="340" y="230" text-anchor="middle" class="font" font-size="12" fill="#fffefb" fill-opacity="0.7">пропущено</text>
+
+  <!-- Только в C(q): ложные -->
+  <text x="620" y="210" text-anchor="middle" class="font" font-size="20" font-weight="700" fill="#6BC075">4</text>
+  <text x="620" y="230" text-anchor="middle" class="font" font-size="12" fill="#fffefb" fill-opacity="0.7">ложные</text>
+
+  <!-- Формула справа -->
+  <g>
+    <rect x="782" y="150" width="178" height="120" rx="12" fill="#241E13" stroke="#F2B84B" stroke-width="2"/>
+    <text x="871" y="185" text-anchor="middle" class="font" font-size="13" font-weight="500" fill="#fffefb" fill-opacity="0.7">recall@100</text>
+    <text x="871" y="215" text-anchor="middle" class="font" font-size="30" font-weight="700" font-style="italic" fill="#fffefb">= 91 / 100</text>
+    <text x="871" y="245" text-anchor="middle" class="font" font-size="13" font-weight="500" fill="#fffefb" fill-opacity="0.7">= 0.91</text>
+  </g>
+</svg>

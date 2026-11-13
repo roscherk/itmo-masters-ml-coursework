@@ -44,6 +44,36 @@ def write_ibin(path: str | Path, data: np.ndarray) -> None:
         f.write(data.astype(np.int32).tobytes())
 
 
+class BinWriter:
+    """Stream rows to an fbin file, filling its row-count header on close."""
+
+    def __init__(self, path: str | Path, d: int):
+        self.path = Path(path)
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.d = d
+        self.n = 0
+        self._file = open(self.path, "wb")
+        self._file.write(struct.pack("<II", 0, d))
+
+    def write(self, chunk: np.ndarray) -> None:
+        chunk = np.ascontiguousarray(chunk, dtype=np.float32)
+        if chunk.ndim != 2 or chunk.shape[1] != self.d:
+            raise ValueError(f"expected (m, {self.d}), got {chunk.shape}")
+        self._file.write(chunk.tobytes())
+        self.n += chunk.shape[0]
+
+    def close(self) -> None:
+        self._file.seek(0)
+        self._file.write(struct.pack("<II", self.n, self.d))
+        self._file.close()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        self.close()
+
+
 # ---------------------------------------------------------------------------
 # Balanced k-means (thin wrapper around faiss)
 # ---------------------------------------------------------------------------

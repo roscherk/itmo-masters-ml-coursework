@@ -1,0 +1,4 @@
+dataset,real,c2st_1nn,fd_rel
+tg1m-perturb-heldout-v2,laion1m,0.51825,0.16776642531839367
+tg1m-gmm-heldout-v2,laion1m,0.522475,0.16786524591569155
+tg1m-cuvs-heldout-v2,laion1m,0.8853,0.008393715289558486

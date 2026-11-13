@@ -1,0 +1,14 @@
+{
+  "seed": 20261115,
+  "fit_size": 100000,
+  "fit_source": "laion1m",
+  "fit_sample_file": "fit_rows.npy",
+  "n": 1000000,
+  "d": 768,
+  "dtype": "float32",
+  "normalize": "L2 unit norm after generation",
+  "queries": 1000,
+  "gt_k": 200,
+  "threads": 6,
+  "disturbgen_note": "Coursework perturbation baseline (k-means centroid + per-coordinate Gaussian std); the VecBench paper's DisturbGen perturbs vector-scalar records and does not specify this embedding-only algorithm."
+}
